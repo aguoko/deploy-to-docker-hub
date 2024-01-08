@@ -1,15 +1,15 @@
 def remote = [:]
-    remote.name = 'Docker-server'
-    remote.host = '35.177.134.78'
+    remote.name = 'Docker'
+    remote.host = '13.40.84.226'
     remote.user = 'ubuntu'
-    remote.password = 'password12345'
+    remote.password = 'Muna@11'
     remote.allowAnyHosts = true
 
 
 pipeline {
   agent any
   environment {
-       imagename = "okoou/docker-repo"
+       imagename = "okoou/docker-class"
        registryCredential = 'DockerHub'
        dockerImage = ''
            }
@@ -40,7 +40,7 @@ pipeline {
       stage('Remote SSH') {
           steps{
       sshCommand remote: remote, command: "ls -lrt"
-      sshCommand remote: remote, command: "docker run -d -p 8080:8080 okoou/docker-repo:5"
+      sshCommand remote: remote, command: "docker run -d -p 8080:8080 okoou/docker-class:1"
       }
       }
     
